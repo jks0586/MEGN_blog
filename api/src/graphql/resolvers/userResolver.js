@@ -26,6 +26,7 @@ export default {
             return {
                 token,
                 userId: user._id
+                
             }
         } catch (error) {
             return error

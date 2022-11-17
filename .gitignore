@@ -6,6 +6,7 @@
 # Node artifact files
 admin/node_modules/
 api/node_modules/
+graphqlexpress/node_modules/
 node_modules/
 dist/
 
