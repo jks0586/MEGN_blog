@@ -1,9 +1,17 @@
 import express from 'express';
 import Postcontroller from '../../controller/post.js';
 import product from '../../controller/product.js';
+import CategoryController from '../../controller/category.js';
 const router = express.Router();
 
 const postController = new Postcontroller();
+const categoryController = new CategoryController();
+
+
+//main route
+router.get('/', (req, res) => {
+    res.send('Get API');
+});
 //Post Method
 router.post('/post', (req, res) => {
     res.send('Post API');
@@ -27,6 +35,13 @@ router.delete('/delete/:id', (req, res) => {
     res.send('Delete by ID API')
 })
 
-
 router.get('/product/get',product.getProduct);
+
+// Category Admin section
+router.get('/category/all',categoryController.getAll);
+router.get('/category/one/:id',categoryController.getOne);
+router.post('/category/save',categoryController.save);
+router.post('/category/update/:id',categoryController.update);
+router.delete('/category/update/:id', categoryController.delete)
+
 export default router;

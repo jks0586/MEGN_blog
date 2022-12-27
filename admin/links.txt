@@ -1,2 +1,16 @@
 https://themefisher.com/best-nextjs-templates
 
+
+
+https://robiokidenis.medium.com/how-to-use-ckeditor-on-your-nextjs-or-react-app-525664cdb1d7
+https://www.section.io/engineering-education/nextjs-dnd-file-upload/
+
+https://spacebro.io/articles/fullcalendar-nextjs-10-higher
+
+
+
+solutions
+
+https://stackoverflow.com/questions/67577975/custom-ckeditor-typeerror-this-props-editor-create-is-not-a-function
+
+https://medium.com/@daniellefebvre/using-ckeditor5-with-gatsby-59e4feafaa9d

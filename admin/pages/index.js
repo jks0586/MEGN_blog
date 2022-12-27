@@ -6,8 +6,9 @@ import ThemeProvider from 'react-bootstrap/ThemeProvider'
 import Admin from '../components/Admin';
 export default function Home() {
 const size = useWindowSize();
-
+// const window = useInitialiseWindow();
   return (
+
     <ThemeProvider
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
       minBreakpoint="xxs"
@@ -20,8 +21,15 @@ const size = useWindowSize();
   )
 }
 
+// function useInitialiseWindow(){
+//   if (typeof window !== "undefined") {
+//     var width = window.innerWidth;     
+//  }
+// }
+
 // Hook
 function useWindowSize() {
+  
   // Initialize state with undefined width/height so server and client renders match
   // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
   const [windowSize, setWindowSize] = useState({

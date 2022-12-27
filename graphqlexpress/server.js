@@ -24,6 +24,6 @@ apolloServer.applyMiddleware({ app });
 
 app.use("/rest", routes);
 
-  app.listen(process.env.PORT, () => {
-    console.log(`🚀 Server is running at http://localhost:${process.env.PORT}`);
-  });
+app.listen(process.env.PORT, () => {
+  console.log(`🚀 Server is running at http://localhost:${process.env.PORT}`);
+});

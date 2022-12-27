@@ -1,3 +1,14 @@
 .login-top{
     top:30%;
 }
+.ck-editor__editable_inline {
+    min-height: 300px;
+}
+.form-control,.form-control:focus{
+    background-color: black;
+    color: #cacaca;
+}
+
+.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar, .ck.ck-editor__top .ck-sticky-panel .ck-toolbar.ck-rounded-corners{
+    background-color: black;
+}
