@@ -1,7 +1,7 @@
 import Category from "../models/category.js";
 import Book from "../models/book.js";
 
-const Categorycontroller= class category{
+const Usercontroller= class user{
     getAll(req,res){
         res.status(200).json(req.body);
     }
@@ -22,4 +22,4 @@ const Categorycontroller= class category{
     }
 }
 
-export default Categorycontroller;
+export default Usercontroller;

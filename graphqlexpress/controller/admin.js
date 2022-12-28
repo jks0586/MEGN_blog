@@ -1,7 +1,7 @@
-import Category from "../models/category.js";
-import Book from "../models/book.js";
-
-const Categorycontroller= class category{
+// import Category from "../models/category.js";
+import Admin from "../models/admin.js";
+import MD5 from 'md5';
+const Admincontroller= class admin{
     getAll(req,res){
         res.status(200).json(req.body);
     }
@@ -10,8 +10,9 @@ const Categorycontroller= class category{
     }
     save(req,res){
         // console.log(req.body);
-        const category = Category.create(req.body);
-        res.status(200).json({data:category});
+        req.body.password=MD5(req.body.password);
+        const adminuser = Admin.create(req.body);
+        res.status(200).json({data:adminuser});
         // res.json({'AAA':'HHHH'});
     }
     update(req,res){
@@ -22,4 +23,4 @@ const Categorycontroller= class category{
     }
 }
 
-export default Categorycontroller;
+export default Admincontroller;

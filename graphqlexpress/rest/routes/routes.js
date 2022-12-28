@@ -2,6 +2,7 @@ import express from 'express';
 import Postcontroller from '../../controller/post.js';
 import product from '../../controller/product.js';
 import CategoryController from '../../controller/category.js';
+import AdminController from '../../controller/admin.js';
 const router = express.Router();
 
 const postController = new Postcontroller();
@@ -43,5 +44,13 @@ router.get('/category/one/:id',categoryController.getOne);
 router.post('/category/save',categoryController.save);
 router.post('/category/update/:id',categoryController.update);
 router.delete('/category/update/:id', categoryController.delete)
+
+// Admin user Admin section
+const adminController = new AdminController();
+router.get('/admin/all',adminController.getAll);
+router.get('/admin/one/:id',adminController.getOne);
+router.post('/admin/save',adminController.save);
+router.post('/admin/update/:id',adminController.update);
+router.delete('/admin/update/:id', adminController.delete)
 
 export default router;
