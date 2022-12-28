@@ -1,6 +1,11 @@
 import axios from 'axios';
+import * as dotenv from 'dotenv';
+dotenv.config();
+// const laxios = axios.create({
+//     baseURL: 'http://localhost:4000/rest/',
+//   });
 const laxios = axios.create({
-    baseURL: 'http://localhost:4000/rest/',
+    baseURL: process.env.API_URL,
   });
 
 //   laxios.defaults.timeout = 2500;

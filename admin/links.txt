@@ -7,6 +7,8 @@ https://www.section.io/engineering-education/nextjs-dnd-file-upload/
 
 https://spacebro.io/articles/fullcalendar-nextjs-10-higher
 
+datatable use link
+https://codeflarelimited.com/blog/how-to-use-data-tables-in-react-js/
 
 
 solutions

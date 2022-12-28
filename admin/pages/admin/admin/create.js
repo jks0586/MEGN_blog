@@ -5,7 +5,7 @@ import Dataform from './Dataform'
 const create = () => {
   return (
     <Admin> 
-      <Dataform></Dataform>
+      <Dataform />
     </Admin>
   )
 }

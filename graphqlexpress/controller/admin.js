@@ -12,7 +12,8 @@ const Admincontroller= class admin{
         // console.log(req.body);
         req.body.password=MD5(req.body.password);
         const adminuser = Admin.create(req.body);
-        res.status(200).json({data:adminuser});
+        // console.log(adminuser);
+        res.status(200).json(adminuser);
         // res.json({'AAA':'HHHH'});
     }
     update(req,res){

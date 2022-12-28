@@ -3,6 +3,9 @@ import { Button, Form } from "react-bootstrap";
 // import Loadable from 'react-loadable';
 import { optionsdata } from "../../../config/common";
 import laxios from '../../../config/laxios';
+import swal from 'sweetalert';
+import {useRouter} from 'next/router'
+
 // import axios from "axios";
 // const Editor = Loadable({
 // 	loader: () => import('../../../components/Editor'),
@@ -11,6 +14,7 @@ import laxios from '../../../config/laxios';
 // 	}
 //   });
 const Dataform = () => {
+	const router = useRouter();
 	// const [editorLoaded, setEditorLoaded] = useState(false);
 	// const [editordata, setEditordata] = useState('');
 	const [data, setData] = useState({
@@ -26,20 +30,22 @@ const Dataform = () => {
 		e.preventDefault();
 		await laxios.post('/admin/save', data)
         .then(response => {
-			console.log(response);
+			console.log(response.data);
+			if(response.status==200){
+				swal("Congratulations!", "You have created an admin user!", "success").then((value) => {
+					
+					router.push("/admin/admin");
+				  });;
+			}
 		});
 	};
 	const handleChange=(e)=>{
 		setData({...data,[e.target.name]:e.target.value});
 	}
 
-	useEffect(() => {
-		
-	}, [])
-
 	return (
 		<div className="container">
-			<Form onSubmit={handleSubmit} method="POST">
+			<Form id="adminform" onSubmit={handleSubmit} method="POST">
 				<Form.Group className="mb-3" controlId="username">
 					<Form.Label>User Name</Form.Label>
 					<Form.Control name="username"  value={data.username} type="text" onChange={handleChange} placeholder="Enter User Name" />
@@ -59,12 +65,12 @@ const Dataform = () => {
 				<Form.Group className="mb-3"  controlId="status">
 					<Form.Label>Status</Form.Label>
 					<Form.Select aria-label="Default select example"  name="status" onChange={handleChange}>
-					<option>Select Status</option>
+					<option key="0">Select Status</option>
 					{optionsdata.status.map((value,index)=>{
 						return (
-							<>
-							<option key={value.value} value={value.value}>{value.label}</option>
-							</>
+							
+							<option key={index++} value={value.value}>{value.label}</option>
+							
 						)
 					})}
 					

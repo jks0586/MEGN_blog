@@ -20,14 +20,17 @@ const Sidebar = (props) => {
       <Container className='p-0'>
       <Nav>
       <Nav.Item className='w-100'>
-                <Nav.Link href="/admin/category" className='ms-2 text-white'> <Fa.FaList /> Category</Nav.Link>
+                <Nav.Link key="category" href="/admin/category" className='ms-2 text-white'> <Fa.FaList /> Category</Nav.Link>
       </Nav.Item>
       <Nav.Item className='w-100'>
-                <Nav.Link href="/admin/user" className='ms-2 text-white'> <Fa.FaUsers /> Users</Nav.Link>
+                <Nav.Link  key="admin"href="/admin/admin" className='ms-2 text-white'> <Fa.FaUsers /> Admins</Nav.Link>
+      </Nav.Item>
+      <Nav.Item className='w-100'>
+                <Nav.Link key="user" href="/admin/user" className='ms-2 text-white'> <Fa.FaUsers /> Users</Nav.Link>
       </Nav.Item>
 
       <Nav.Item className='w-100'>
-                <Nav.Link href="/admin/product" className='ms-2 text-white'><Fa.FaShoppingBag /> Products</Nav.Link>
+                <Nav.Link key="product" href="/admin/product" className='ms-2 text-white'><Fa.FaShoppingBag /> Products</Nav.Link>
       </Nav.Item>
 
       </Nav>
