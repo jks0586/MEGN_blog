@@ -5,6 +5,7 @@ dbconnect();
 import { typeDefs } from './graphql/typedefs.js';
 import { resolvers } from './graphql/resolvers.js';
 import routes from './rest/routes/routes.js';
+import cors from 'cors';
 // import resolvers from './graphql/resolvers/index.js';
 // import typeDefs from './graphql/schema.js';
 // import models from './models/index.js';
@@ -19,6 +20,8 @@ const apolloServer = new ApolloServer({
 
 //express server
 const app = express();
+app.use(cors())
+app.use(express.json());
 await apolloServer.start();
 apolloServer.applyMiddleware({ app });
 

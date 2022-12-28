@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import Loadable from 'react-loadable';
 import { optionsdata } from "../../../config/common";
+import laxios from '../../../config/laxios';
+import axios from "axios";
 const Editor = Loadable({
 	loader: () => import('../../../components/Editor'),
 	loading() {
@@ -25,20 +27,28 @@ const Dataform = () => {
 	useEffect(() => {
 		setEditorLoaded(true);
 	}, []);
-	const handleSubmit = (e) => {
+	const  handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(data);
-		console.log(editordata);
+		await laxios.post('/category/save', data)
+        .then(response => {
+			console.log(response);
+		});
 	};
 	const handleChange=(e)=>{
 		setData({...data,[e.target.name]:e.target.value});
 	}
 
 	const onDescriptionChange = (dataname,datachange) => {
-		// console.log(datachange,'uyuiyyiyyi',dataname);
+		
         setData({...data,[dataname]:datachange});
-        // setEditordata({dataname, datachange});
+       
     }
+	useEffect(() => {
+		// console.log(process.env.API_URL);
+		laxios.get('/category/all').then(res=>{
+			console.log(res);
+		})
+	}, [])
 
 	return (
 		<div className="container">
@@ -84,6 +94,20 @@ const Dataform = () => {
 					</Form.Select>
 				</Form.Group>
 
+
+				<Form.Group className="mb-3" controlId="formBasicName">
+					<Form.Label>Top</Form.Label>
+					<Form.Select aria-label="Select Top" name="top" onChange={handleChange}>
+					<option>Select Position</option>
+					{optionsdata.status.map((value,index)=>{
+						return (
+							<>
+							<option value={value.value}>{value.label}</option>
+							</>
+						)
+					})}
+					</Form.Select>
+				</Form.Group>
 				<Button variant="primary" type="submit">
 					Submit
 				</Button>
