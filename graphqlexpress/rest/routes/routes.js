@@ -50,7 +50,7 @@ const adminController = new AdminController();
 router.get('/admin/all',adminController.getAll);
 router.get('/admin/one/:id',adminController.getOne);
 router.post('/admin/save',adminController.save);
-router.post('/admin/update/:id',adminController.update);
+router.put('/admin/edit/:id',adminController.update);
 router.delete('/admin/update/:id', adminController.delete)
 
 export default router;

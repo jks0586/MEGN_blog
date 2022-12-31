@@ -6,13 +6,7 @@ import laxios from '../../../config/laxios';
 import swal from 'sweetalert';
 import {useRouter} from 'next/router'
 import { routeslink } from "../../../config/routeslink";
-// import axios from "axios";
-// const Editor = Loadable({
-// 	loader: () => import('../../../components/Editor'),
-// 	loading() {
-// 	  return <div>Loading...</div>
-// 	}
-//   });
+
 const Dataform = () => {
 
 	const router = useRouter();
