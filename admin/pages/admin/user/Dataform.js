@@ -6,6 +6,7 @@ import laxios from '../../../config/laxios';
 import swal from 'sweetalert';
 import {useRouter} from 'next/router'
 import { routeslink } from "../../../config/routeslink";
+import { adminlink } from "../../../config/adminlink";
 
 const Dataform = () => {
 
@@ -30,16 +31,16 @@ const Dataform = () => {
 	
 	const  handleSubmit = async (e) => {
 		e.preventDefault();
-		const submiturl=routeslink.admin.save;
+		const submiturl=routeslink.user.save;
 		console.log(data);
 		if(data._id){
-			submiturl=routeslink.admin.edit.replace(':id',data._id);
+			submiturl=routeslink.user.edit.replace(':id',data._id);
 			await laxios.put(submiturl, data)
 			.then(response => {
 				// console.log(response.data);
 				if(response.status==200){
 					swal("Congratulations!", "You have created an admin user!", "success").then((value) => {
-						router.push("/admin/admin");
+						router.push(adminlink.user.all);
 					});;
 				}
 			});
@@ -49,7 +50,7 @@ const Dataform = () => {
 				// console.log(response.data);
 				if(response.status==200){
 					swal("Congratulations!", "You have created an admin user!", "success").then((value) => {
-						router.push("/admin/admin");
+						router.push(adminlink.user.all);
 					});;
 				}
 			});
@@ -64,7 +65,7 @@ const Dataform = () => {
 	if(postload.current){
 		if(id!==undefined){
 		console.log(id);
-	 	laxios.get(routeslink.admin.one.replace(":id",id))
+	 	laxios.get(routeslink.catgeory.one.replace(":id",id))
         .then(response => {
 			console.log(response.data);
 			setData({_id:response.data._id,'username':response.data.username,'email':response.data.email,'status':response.data.status});
@@ -102,7 +103,7 @@ const Dataform = () => {
 					<Form.Select  DefaultValuue={data.status} aria-label="Default select example"  name="status" onChange={handleChange}>
 					{optionsdata.status.map((value,index)=>{
 						return (
-							<option key={index++}  value={value.value} >{value.label}</option>
+							<option key={index++} selected={(value.value==data.status)?'selected':''} value={value.value} >{value.label}</option>
 						)
 					})}
 					

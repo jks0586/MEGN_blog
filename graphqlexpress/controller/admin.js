@@ -24,24 +24,11 @@ const Admincontroller= class admin{
     async getOne(req,res){
         const findadmin= await Admin.findOne({"_id":req.params.id}).exec();
         console.log(findadmin);
-        // await Admin.findById(
             if (findadmin) {
-                        res.status(200).json(findadmin);
-                    }  else {
-                        res.status(404).json(err);
-                    }
-        // req.params.id,function (err, findadmin) {
-        //     if (err){
-        //         res.status(404).json(err);
-        //         // return handleError(err);
-        //     }
-    
-        //     if (findone) {
-        //         res.status(200).json(findone);
-        //     }
-        // });
-       
-        
+                res.status(200).json(findadmin);
+            }  else {
+                res.status(404).json(err);
+            }
     }
     save(req,res){
         // console.log(req.body);
@@ -54,7 +41,7 @@ const Admincontroller= class admin{
             const adminuser = Admin.create(req.body);
             res.status(200).json(adminuser);
         } catch(err){
-            res.status(404).json(adminuser);
+            res.status(404).json(err);
         }
         // res.json({'AAA':'HHHH'});
     }

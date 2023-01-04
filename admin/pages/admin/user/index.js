@@ -6,9 +6,11 @@ import "ag-grid-community/styles//ag-theme-alpine.css";
 import * as Fa from "react-icons/fa";
 import parse from "html-react-parser";
 import { routeslink } from "../../../config/routeslink";
+import { adminlink } from "../../../config/adminlink";
 import laxios from '../../../config/laxios';
 import { useRouter } from 'next/router';
-
+import swal from 'sweetalert';
+import { Breadcrumb, Button } from "react-bootstrap";
 const index = () => {
   const router = useRouter();
   const gridRef = useRef();
@@ -23,10 +25,11 @@ const index = () => {
     resizable: true,
   }));
 
+
    // Example load data from sever
    const onGridReady = useCallback((params) => {
     laxios
-        .get(routeslink.admin.all)
+        .get(routeslink.user.all)
         .then((response) => {
             // console.log(response.data);
             setRowData(response.data);
@@ -48,19 +51,36 @@ const index = () => {
 const handleEdit=(e)=>{
   const actionnode=e.target.parentElement.parentElement;
   console.log(actionnode.dataset.id);
-  router.push(routeslink.admin.edit.replace(":id",actionnode.dataset.id));
-  // router.push(routeslink.admin.update.replace(":id",actionnode.dataset.id));
-  // router.push({
-  //   pathname: routeslink.admin.update,
-  //   query: { id: actionnode.dataset.id },
-  // })
-
+  if(actionnode.dataset.id!==undefined){
+    router.push(routeslink.user.edit.replace(":id",actionnode.dataset.id));
+  }
 }
 
-const handleDelete=(e)=>{
+const handleCreate=(e)=>{
+  router.push(adminlink.user.create);
+}
+const handleDelete= async (e)=>{
   const actionnode=e.target.parentElement.parentElement;
   console.log(actionnode.dataset.id);
+  if(actionnode.dataset.id!==undefined){
+  laxios
+        .delete(routeslink.user.delete.replace(":id",actionnode.dataset.id))
+        .then((response) => {
+          if(response.status==200){
+            swal("Congratulations!", "User has been removed successfully", "success").then((value) => {
+              // router.push(adminlink.user.all);
+              router.reload(window.location.pathname)
+            });;
+          }
+        })
+        .catch((err) => {
+           console.log(err);
+        }
+          );
+      }
 }
+
+
 const [columnDefs] = useState([
     { headerName:'Id',field: '_id' },
     { headerName:'User Name',field: 'username' },
@@ -78,6 +98,24 @@ const [columnDefs] = useState([
 
 	return (
 		<Admin>
+    <div className="row">
+    <div className="col-md-10">
+    <Breadcrumb className="ms-3 w-80">
+        <Breadcrumb.Item href={adminlink.user.all}>
+           Dashboard
+        </Breadcrumb.Item>
+        <Breadcrumb.Item active>
+          Users List
+        </Breadcrumb.Item>
+        
+        
+    </Breadcrumb>
+    </div>
+    <div className="col-md-2">
+    <Button className="float-start" variant="outline-dark" onClick={handleCreate}>Create</Button>
+    </div>
+    </div>
+
     <div style={containerStyle}>
         {/* On div wrapping Grid a) specify theme CSS Class Class and b) sets Grid size */}
         <div className="ag-theme-alpine" style={gridStyle}>

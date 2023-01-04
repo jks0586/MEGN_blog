@@ -12,3 +12,12 @@
 .ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar, .ck.ck-editor__top .ck-sticky-panel .ck-toolbar.ck-rounded-corners{
     background-color: black;
 }
+
+
+.breadcrumb-item + .breadcrumb-item::before{
+    color: inherit !important;
+    text-decoration: none !important;
+}
+.breadcrumb-item.active {
+    color: inherit !important;
+}

@@ -6,6 +6,7 @@ import laxios from '../../../config/laxios';
 import swal from 'sweetalert';
 import {useRouter} from 'next/router'
 import { routeslink } from "../../../config/routeslink";
+import { adminlink } from "../../../config/adminlink";
 // import axios from "axios";
 // const Editor = Loadable({
 // 	loader: () => import('../../../components/Editor'),
@@ -45,7 +46,7 @@ const Dataform = () => {
 				// console.log(response.data);
 				if(response.status==200){
 					swal("Congratulations!", "You have created an admin user!", "success").then((value) => {
-						router.push("/admin/admin");
+						router.push(adminlink.admin.all);
 					});;
 				}
 			});
@@ -55,7 +56,7 @@ const Dataform = () => {
 				// console.log(response.data);
 				if(response.status==200){
 					swal("Congratulations!", "You have created an admin user!", "success").then((value) => {
-						router.push("/admin/admin");
+						router.push(adminlink.admin.all);
 					});;
 				}
 			});
@@ -108,7 +109,7 @@ const Dataform = () => {
 					<Form.Select  DefaultValuue={data.status} aria-label="Default select example"  name="status" onChange={handleChange}>
 					{optionsdata.status.map((value,index)=>{
 						return (
-							<option key={index++}  value={value.value} >{value.label}</option>
+							<option key={index++}  selected={(value.value==data.status)?'selected':''} value={value.value} >{value.label}</option>
 						)
 					})}
 					
