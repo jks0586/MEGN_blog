@@ -24,6 +24,13 @@
       one:'category/one/:id',
       edit:'category/edit/:id',
       delete:'category/delete/:id',
+    },
+    product:{
+      all:'product/all',
+      save:'product/save',
+      one:'product/one/:id',
+      edit:'product/edit/:id',
+      delete:'product/delete/:id',
     }
 }
 

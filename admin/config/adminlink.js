@@ -14,6 +14,11 @@ const adminlink = {
         create:'/admin/category/create',
         edit:'/admin/category/edit/:id',
     },
+    product:{
+        all:'/admin/product',
+        create:'/admin/product/create',
+        edit:'/admin/product/edit/:id',
+    },
 }
 
 // export default routeslink;

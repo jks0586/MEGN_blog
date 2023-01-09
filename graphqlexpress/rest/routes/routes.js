@@ -8,7 +8,7 @@ import Uploadcontroller from '../../controller/upload.js';
 const router = express.Router();
 import uploadfile from '../../config/uploadfile.js';
 
-const postController = new Postcontroller();
+
 const categoryController = new CategoryController();
 
 const uploadimage=uploadfile.uploadfiles('images');
@@ -21,9 +21,6 @@ router.get('/', (req, res) => {
 router.post('/post', (req, res) => {
     res.send('Post API');
 })
-
-//Get all Method
-router.get('/getAll', postController.getAllPost);
 
 //Get by ID Method
 router.get('/getOne/:id', (req, res) => {
@@ -40,7 +37,7 @@ router.delete('/delete/:id', (req, res) => {
     res.send('Delete by ID API')
 })
 
-router.get('/product/get',product.getProduct);
+// router.get('/product/get',product.getProduct);
 
 // Category Admin section
 router.get('/category/all',categoryController.getAll);
@@ -71,5 +68,17 @@ router.delete('/user/delete/:id', userController.delete);
 // upload files section
 const uploadfileController=new Uploadcontroller();
 router.post('/upload',uploadfileController.uploadfile);
+
+
+
+
+//Get all Method
+const postController = new Postcontroller();
+router.get('/post/all',postController.getAll);
+router.get('/post/one/:id',postController.getOne);
+router.post('/post/save',postController.save);
+router.put('/post/edit/:id',postController.update);
+router.delete('/post/delete/:id', postController.delete);
+
 
 export default router;
