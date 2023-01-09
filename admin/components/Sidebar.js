@@ -33,6 +33,10 @@ const Sidebar = (props) => {
                 <Nav.Link key="product" href="/admin/product" className='ms-2 text-white'><Fa.FaShoppingBag /> Products</Nav.Link>
       </Nav.Item>
 
+      <Nav.Item className='w-100'>
+                <Nav.Link key="product" href="/admin/post" className='ms-2 text-white'><Fa.FaShoppingBag /> Posts </Nav.Link>
+      </Nav.Item>
+
       </Nav>
       </Container>
     </div>

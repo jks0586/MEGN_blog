@@ -20,8 +20,9 @@ const Postcontroller= class post{
        
     }
     save(req,res){
-        // console.log(req.body);
-       console.log(req.file);
+        
+        console.log(req.body);
+    //    console.log(req.file);
 
        res.json({'aaa':'yyy'});
 

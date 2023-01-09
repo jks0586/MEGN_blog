@@ -73,10 +73,11 @@ router.post('/upload',uploadfileController.uploadfile);
 
 
 //Get all Method
+import { postValidationRules,validate } from '../../validators/postvalidator.js';
 const postController = new Postcontroller();
 router.get('/post/all',postController.getAll);
 router.get('/post/one/:id',postController.getOne);
-router.post('/post/save',postController.save);
+router.post('/post/save',postValidationRules(), validate,postController.save);
 router.put('/post/edit/:id',postController.update);
 router.delete('/post/delete/:id', postController.delete);
 

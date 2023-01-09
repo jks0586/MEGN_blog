@@ -31,6 +31,13 @@
       one:'product/one/:id',
       edit:'product/edit/:id',
       delete:'product/delete/:id',
+    },
+    post:{
+      all:'post/all',
+      save:'post/save',
+      one:'post/one/:id',
+      edit:'post/edit/:id',
+      delete:'post/delete/:id',
     }
 }
 

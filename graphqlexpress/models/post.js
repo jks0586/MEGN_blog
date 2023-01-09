@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 // Define the book schema
 const postSchema = new mongoose.Schema(
     {
-        title: {
+        name: {
             type: String,
             required: true
         },
