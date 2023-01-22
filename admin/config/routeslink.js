@@ -5,6 +5,8 @@
       file:'upload',
     },
     admin:{
+        login:'admin/login',
+        signup:'admin/signup',
         all:'admin/all',
         save:'admin/save',
         one:'admin/one/:id',

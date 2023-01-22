@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import { optionsdata } from "../../../config/common";
 import laxios from '../../../config/laxios';
 import swal from 'sweetalert';
-import {useRouter} from 'next/router'
+import {useRouter} from 'next/router';
 import { routeslink } from "../../../config/routeslink";
 import { adminlink } from "../../../config/adminlink";
 // import axios from "axios";

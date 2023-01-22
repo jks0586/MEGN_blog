@@ -1,10 +1,28 @@
 import React from "react";
 import Blank from "../../components/Blank";
 import Card from "react-bootstrap/Card";
+import laxios from "../../config/laxios";
+import { routeslink } from "../../config/routeslink";
 import { useForm } from "react-hook-form";
+import {useRouter} from 'next/router';
+import { adminlink } from "../../config/adminlink";
 const login = () => {
+	const router = useRouter();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = (data) => {
+		console.log(data);
+		// console.log(routeslink.admin.login);
+		laxios.post(routeslink.admin.login,data).then((response)=>{
+			console.log(response.data.data);
+			localStorage.setItem('adminId', response.data.data.adminId);
+			localStorage.setItem('email', response.data.data.email);
+			localStorage.setItem('letscms_token', response.data.data.token);
+			router.push(adminlink.admin.all);
+		}).catch((error)=>{
+			console.log(error);
+		});
+		
+	}
 
     // const handleSubmit=(e)=>{
         

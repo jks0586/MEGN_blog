@@ -53,6 +53,8 @@ const Dataform = () => {
 						router.push(adminlink.user.all);
 					});;
 				}
+			}).catch((error)=>{
+				console.log(error);
 			});
 		}
 		
@@ -61,11 +63,12 @@ const Dataform = () => {
 	const handleChange=(e)=>{
 		setData({...data,[e.target.name]:e.target.value});
 	}
- useEffect( () => {
+ useEffect( (id) => {
 	if(postload.current){
 		if(id!==undefined){
-		console.log(id);
-	 	laxios.get(routeslink.catgeory.one.replace(":id",id))
+		// console.log(id);
+		// alert(routeslink.catgeory.one);
+		laxios.get(routeslink.catgeory.one.replace(":id",id))
         .then(response => {
 			console.log(response.data);
 			setData({_id:response.data._id,'username':response.data.username,'email':response.data.email,'status':response.data.status});
@@ -106,7 +109,6 @@ const Dataform = () => {
 							<option key={index++} selected={(value.value==data.status)?'selected':''} value={value.value} >{value.label}</option>
 						)
 					})}
-					
 					
 					</Form.Select>
 				</Form.Group>

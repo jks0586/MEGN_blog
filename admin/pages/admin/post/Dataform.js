@@ -60,11 +60,11 @@ const Dataform = () => {
 					});;
 				}
 			}).catch(error => {
-				console.log(error.response.data.errors,'uuuuu');
+				// console.log(error.response.data.errors,'uuuuu');
 				const removeclassElements=document.getElementsByClassName('alert');
 				if(removeclassElements.length>0){
 					for (var i = removeclassElements.length - 1; i >= 0; --i) {
-						// removeclassElements[i].addClass('d-none');
+						removeclassElements[i].classList.add('d-none');
 					  }
 				}
 				if (error.response.data.errors) {
@@ -76,8 +76,8 @@ const Dataform = () => {
 						
 						// console.log(errelement);
 
-						errelement.textContent+=Object.values(value[1])[0];
-						
+						errelement.innerHTML=Object.values(value[1])[0];
+						errelement.classList.remove("d-none");
 						// let diverror = document.createElement('div');
 						// diverror.textContent = Object.values(value[1])[0];
 						// diverror.classList.add('alert', 'alert-danger');
@@ -152,7 +152,7 @@ const Dataform = () => {
 					}}
 
 					/>
-					<Alert key='danger' className="d-none" id="description" variant='danger'></Alert>
+					<Alert key='danger' className="d-none" id="errordescription" variant='danger'></Alert>
 				</Form.Group>
 				
 				<Button variant="primary" type="submit">

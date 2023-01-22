@@ -7,7 +7,7 @@ const postValidationRules = () => {
     ]
   }
 
-  const validate = (req, res, next) => {
+  const postValidate = (req, res, next) => {
     const errors = validationResult(req)
     if (errors.isEmpty()) {
        next()
@@ -20,4 +20,4 @@ const postValidationRules = () => {
     })
   }
 
-export  { postValidationRules, validate };
+export  { postValidationRules, postValidate };

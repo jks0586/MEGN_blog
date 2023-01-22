@@ -4,6 +4,10 @@ const adminlink = {
         create:'/admin/admin/create',
         edit:'/admin/admin/edit/:id',
     },
+    auth:{
+        login:'/user/login',
+        signup:'/user/signup',
+    },
     user:{
         all:'/admin/user',
         create:'/admin/user/create',

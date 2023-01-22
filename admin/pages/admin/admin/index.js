@@ -28,10 +28,13 @@ const index = () => {
     laxios
         .get(routeslink.admin.all)
         .then((response) => {
-            // console.log(response.data);
+            console.log(response.data,'ggggg');
             setRowData(response.data);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          // console.log(err,'fffff');
+        }
+          );
 
         gridRef.current.api.sizeColumnsToFit({
           defaultMinWidth: 100,
@@ -60,6 +63,21 @@ const handleEdit=(e)=>{
 const handleDelete=(e)=>{
   const actionnode=e.target.parentElement.parentElement;
   console.log(actionnode.dataset.id);
+  if(actionnode.dataset.id!==undefined){
+    laxios
+          .delete(routeslink.admin.delete.replace(":id",actionnode.dataset.id))
+          .then((response) => {
+            if(response.status==200){
+              swal("Congratulations!", "Admin has been removed successfully", "success").then((value) => {
+                router.reload(window.location.pathname)
+              });;
+            }
+          })
+          .catch((err) => {
+             console.log(err);
+          }
+            );
+    }
 }
 const [columnDefs] = useState([
     { headerName:'Id',field: '_id' },
