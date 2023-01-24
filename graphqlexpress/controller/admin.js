@@ -75,44 +75,59 @@ const Admincontroller= class admin{
         }
         
     }
-    delete(req,res){
-        res.status(200).json(req.body);
+    async delete(req,res){
+        try{
+            const findadmin= await Admin.findOne({"_id":req.params.id}).exec();
+            findadmin.remove();
+            const resmessage={
+                'success':'Successfully Admin Removed'
+            }
+            res.status(200).json(resmessage);
+        }
+        catch(err){
+            res.status(404).json(err);
+        }
     }
 
-    async login(req,res){
+     login(req,res){
         let { email, password } = req.body;
-        let existingAdmin;
+        // let existingAdmin;
+
+        // console.log(email);
         try{
-            existingAdmin = await Admin.findOne({ email: email });
-        } catch{
+             Admin.findOne({ email: email },(err,admin)=>{
+                
+                if (!admin || admin.password != MD5(password)) {
+                    res.status(401).json({success: false,'error':'Password does is not matched, please use correct password.'});
+                }
+
+                let token;
+
+                try {
+                    token = jwt.sign(
+                      { adminId: admin._id.toString(), email: admin.email },
+                      process.env.JWT_SECRETE,
+                      { expiresIn: process.env.JWT_EXIRETIME}
+                    );
+        
+                    res.status(200).json({
+                        success: true,
+                        data: {
+                            adminId: admin._id.toString(),
+                            email: admin.email,
+                            token: token,
+                        },
+                    });
+                  } catch (err) {
+                    res.status(401).json({success: false,'error':'Authentication Failed'});
+                  }
+            });
+        } catch (err) {
             res.status(401).json({success: false,'error':'Error! Something went wrong.'});
         }
 
-        if (!existingAdmin || existingAdmin.password != MD5(password)) {
-            res.status(401).json({success: false,'error':'Password does is not matched, please use correct password.'});
-        }
-        
-        let token;
-
-        try {
-            token = jwt.sign(
-              { adminId: existingAdmin._id, email: existingAdmin.email },
-              process.env.JWT_SECRETE,
-              { expiresIn: process.env.JWT_EXIRETIME}
-            );
-          } catch (err) {
-            res.status(401).json({success: false,'error':'Authentication Failed'});
-          }
- 
-          res.status(200).json({
-            success: true,
-            data: {
-                adminId: existingAdmin.id,
-                email: existingAdmin.email,
-                token: token,
-            },
-        });
-
+        // 
+          
     }
 
     async signup(req,res){
@@ -139,16 +154,18 @@ const Admincontroller= class admin{
                   process.env.JWT_SECRETE,
                   { expiresIn: process.env.JWT_EXIRETIME}
                 );
+
+                res.status(200).json({
+                    success: true,
+                    data: { adminId: adminuser._id,
+                        email: adminuser.email, token: token },
+                    });
               } catch (err) {
                 console.log(err);
                 res.status(401).json({success: false,'error':'Authentication Failed'});
               }
 
-              res.status(200).json({
-                success: true,
-                data: { adminId: adminuser._id,
-                    email: adminuser.email, token: token },
-                });
+              
 
           } catch {
             res.status(401).json({success: false,'error':'Error! Something went wrong.'});

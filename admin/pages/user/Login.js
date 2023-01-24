@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Blank from "../../components/Blank";
 import Card from "react-bootstrap/Card";
 import laxios from "../../config/laxios";
@@ -6,18 +6,29 @@ import { routeslink } from "../../config/routeslink";
 import { useForm } from "react-hook-form";
 import {useRouter} from 'next/router';
 import { adminlink } from "../../config/adminlink";
+import swal from "sweetalert";
 const login = () => {
 	const router = useRouter();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
     const onSubmit = (data) => {
 		console.log(data);
 		// console.log(routeslink.admin.login);
-		laxios.post(routeslink.admin.login,data).then((response)=>{
-			console.log(response.data.data);
-			localStorage.setItem('adminId', response.data.data.adminId);
-			localStorage.setItem('email', response.data.data.email);
-			localStorage.setItem('letscms_token', response.data.data.token);
-			router.push(adminlink.admin.all);
+		laxios.post(routeslink.admin.login,data)
+		.then((response)=>{
+			if(response.name=='AxiosError'){
+				console.log(response.response.status);
+			} else {
+				setTimeout(()=>{
+					localStorage.setItem('adminId', response.data.data.adminId);
+					localStorage.setItem('email', response.data.data.email);
+					localStorage.setItem('letscms_token', response.data.data.token);
+					swal("Congratulation","User Logedin Successfully","success").then(()=>{
+						router.push(adminlink.admin.all);
+					});
+				},2000);
+			}
+			
 		}).catch((error)=>{
 			console.log(error);
 		});
@@ -31,6 +42,11 @@ const login = () => {
     //     return false;
     // }
 
+	useEffect(() => {
+		if(localStorage.getItem('letscms_token')){
+			router.push(adminlink.admin.all);
+		}
+	}, []);
 
 	return (
 		<>
@@ -40,9 +56,10 @@ const login = () => {
 						<div className=" w-75 m-auto center">
 							<div className="row">
 								<div className="col-12 m-100">
-                                <h4 className="text-center text-white">Admin Login</h4>
+                                <h4 className="text-center text-white">Admin Login {process.env.customKey}</h4>
                                 </div>
 							</div>
+							
 							<form onSubmit={handleSubmit(onSubmit)}>
 								<div className="form-group">
 									<label className="w-100" htmlFor="exampleInputEmail1"><h5 className="text-white">Email address</h5></label>

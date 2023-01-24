@@ -8,7 +8,7 @@ import parse from "html-react-parser";
 import { routeslink } from "../../../config/routeslink";
 import laxios from '../../../config/laxios';
 import { useRouter } from 'next/router';
-
+import swal from 'sweetalert';
 const index = () => {
   const router = useRouter();
   const gridRef = useRef();
@@ -28,11 +28,11 @@ const index = () => {
     laxios
         .get(routeslink.admin.all)
         .then((response) => {
-            console.log(response.data,'ggggg');
+            // console.log(response.data,'ggggg');
             setRowData(response.data);
         })
         .catch((err) => {
-          // console.log(err,'fffff');
+          console.log(err);
         }
           );
 
@@ -50,7 +50,7 @@ const index = () => {
 
 const handleEdit=(e)=>{
   const actionnode=e.target.parentElement.parentElement;
-  console.log(actionnode.dataset.id);
+  // console.log(actionnode.dataset.id);
   router.push(routeslink.admin.edit.replace(":id",actionnode.dataset.id));
   // router.push(routeslink.admin.update.replace(":id",actionnode.dataset.id));
   // router.push({

@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  env: {
+    customKey: 'my-value',
+  },
+  basePath: '',
   swcMinify: true,
   images: {
     remotePatterns: [
@@ -14,4 +18,5 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+// module.exports = nextConfig
+export default nextConfig

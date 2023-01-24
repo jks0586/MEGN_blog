@@ -5,17 +5,19 @@ import { useEffect,useState } from 'react'
 import ThemeProvider from 'react-bootstrap/ThemeProvider'
 import Admin from '../components/Admin';
 export default function Home() {
-const size = useWindowSize();
+  useEffect(() => {
+    alert('ggggggg');
+    const size = useWindowSize();
+  },[]);
+
 // const window = useInitialiseWindow();
   return (
-
     <ThemeProvider
       breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
       minBreakpoint="xxs"
       bg="white"
     >
    <Admin size={size}>
-   kjjljljkkkjl
    </Admin>
    </ThemeProvider>
   )
