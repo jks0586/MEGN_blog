@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useRef } from "react";
-import { Button, Form,Image } from "react-bootstrap";
+import { Button, Form,Image } from "bootstrap";
 import Loadable from 'react-loadable';
 import { optionsdata } from "../../../config/common";
 import laxios from '../../../config/laxios';

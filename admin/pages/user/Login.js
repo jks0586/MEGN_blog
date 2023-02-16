@@ -24,7 +24,8 @@ const login = () => {
 					localStorage.setItem('email', response.data.data.email);
 					localStorage.setItem('letscms_token', response.data.data.token);
 					swal("Congratulation","User Logedin Successfully","success").then(()=>{
-						router.push(adminlink.admin.all);
+						// router.push(adminlink.admin.all);
+						window.location.reload();
 					});
 				},2000);
 			}

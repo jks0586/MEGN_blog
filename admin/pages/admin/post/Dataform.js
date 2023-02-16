@@ -59,7 +59,7 @@ const Dataform = () => {
 						// router.push(adminlink.post.all);
 					});;
 				}
-			}).catch(error => {
+			}).catch(errors => {
 				// console.log(error.response.data.errors,'uuuuu');
 				const removeclassElements=document.getElementsByClassName('alert');
 				if(removeclassElements.length>0){
@@ -67,37 +67,17 @@ const Dataform = () => {
 						removeclassElements[i].classList.add('d-none');
 					  }
 				}
-				if (error.response.data.errors) {
-					Object.entries(error.response.data.errors).map((value, index) => {
-						// console.log(value[1],index);
-						// console.log(Object.keys(value[1])[0]);
-						// console.log(Object.values(value[1])[0]);
+				if (errors) {
+					Object.entries(errors).map((value, index) => {
 						const errelement=document.getElementById('error'+Object.keys(value[1])[0]);
-						
-						// console.log(errelement);
-
 						errelement.innerHTML=Object.values(value[1])[0];
 						errelement.classList.remove("d-none");
-						// let diverror = document.createElement('div');
-						// diverror.textContent = Object.values(value[1])[0];
-						// diverror.classList.add('alert', 'alert-danger');
-						// let element = document.getElementsByName(Object.keys(value[1])[0]);
-						// let nextelement = (element!=undefined)?element.nextElementSibling:'';
-						// if(nextelement){
-						// 	nextelement.remove();
-						// }
-						// // console.log(element);
-						// if(element!=undefined){
-						// 	element[0].after(diverror);
-						// }
-		
 					});
-		
 				}
-
 			  });
 		}
 	};
+	
 	const handleChange=(e)=>{
 		setData({...data,[e.target.name]:e.target.value});
 	}

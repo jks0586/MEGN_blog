@@ -57,11 +57,12 @@ router.put('/admin/edit/:id',adminAuth,adminController.update);
 router.delete('/admin/delete/:id',adminAuth,adminController.delete);
 
 
-// Use Admin section
+// Use user section
+import { userValidationRules,userValidate } from '../../validators/uservalidator.js';
 const userController = new UserController();
 router.get('/user/all',adminAuth,userController.getAll);
 router.get('/user/one/:id',adminAuth,userController.getOne);
-router.post('/user/save',adminAuth,userController.save);
+router.post('/user/save',userValidationRules(),userValidate,adminAuth,userController.save);
 router.put('/user/edit/:id',adminAuth,userController.update);
 router.delete('/user/delete/:id', adminAuth,userController.delete);
 

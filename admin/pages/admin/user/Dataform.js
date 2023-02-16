@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useRef } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Alert, Button, Form } from "react-bootstrap";
 // import Loadable from 'react-loadable';
 import { optionsdata } from "../../../config/common";
 import laxios from '../../../config/laxios';
@@ -43,18 +43,34 @@ const Dataform = () => {
 						router.push(adminlink.user.all);
 					});;
 				}
+			}).catch((errors)=>{
+				if(errors){	
+						Object.entries(errors).map((value, index) => {
+							const errelement=document.getElementById('error_'+Object.keys(value[1])[0]);
+							errelement.innerHTML=Object.values(value[1])[0];
+							errelement.classList.remove("d-none");
+					});
+				}
+				// console.log(error,'fffff');
 			});
 		}  else {
 			await laxios.post(submiturl, data)
 			.then(response => {
-				// console.log(response.data);
+				// console.log(response.data,'ggggg');
 				if(response.status==200){
 					swal("Congratulations!", "You have created an admin user!", "success").then((value) => {
 						router.push(adminlink.user.all);
 					});;
 				}
-			}).catch((error)=>{
-				console.log(error);
+			}).catch((errors)=>{
+				if(errors){	
+						Object.entries(errors).map((value, index) => {
+							const errelement=document.getElementById('error_'+Object.keys(value[1])[0]);
+							errelement.innerHTML=Object.values(value[1])[0];
+							errelement.classList.remove("d-none");
+					});
+				}
+				// console.log(error,'fffff');
 			});
 		}
 		
@@ -63,41 +79,49 @@ const Dataform = () => {
 	const handleChange=(e)=>{
 		setData({...data,[e.target.name]:e.target.value});
 	}
- useEffect( (id) => {
-	if(postload.current){
-		if(id!==undefined){
-		// console.log(id);
-		// alert(routeslink.catgeory.one);
-		laxios.get(routeslink.catgeory.one.replace(":id",id))
-        .then(response => {
-			console.log(response.data);
-			setData({_id:response.data._id,'username':response.data.username,'email':response.data.email,'status':response.data.status});
-			// if(response.status==200){
-			// 	swal("Congratulations!", "You have created an admin user!", "success").then((value) => {
-			// 		router.push("/admin/admin");
-			// 	  });;
-			// }
-		});
-	}
-	}
+
 	
-}, [id])
+	useEffect( (id) => {
+		// if(postload.current){
+			// alert(id);
+			if(id!==undefined){
+				
+			// console.log(id);
+			// alert(routeslink.catgeory.one);
+			laxios.get(routeslink.user.one.replace(":id",id))
+			.then(response => {
+				console.log(response.data);
+				setData({_id:response.data._id,'username':response.data.username,'email':response.data.email,'status':response.data.status});
+				// if(response.status==200){
+				// 	swal("Congratulations!", "You have created an admin user!", "success").then((value) => {
+				// 		router.push("/admin/admin");
+				// 	  });;
+				// }
+			});
+		}
+		// }
+	}, [id]);
+
 	return (
+		
 		<div className="container">
 			<Form id="adminform" onSubmit={handleSubmit} method="POST">
 				<Form.Group className="mb-3" controlId="username">
 					<Form.Label>User Name</Form.Label>
 					<Form.Control name="username"  value={data.username} type="text" onChange={handleChange} placeholder="Enter User Name" />
+					<Alert key='danger' className="d-none pt-0 pb-0" id="error_username" variant='danger'></Alert>
 				</Form.Group>
 		
 				<Form.Group className="mb-3"  controlId="email">
 					<Form.Label>Email</Form.Label>
 					<Form.Control name="email"  value={data.email} type="email" onChange={handleChange} placeholder="Enter Email" />
+					<Alert key='danger' className="d-none pt-0 pb-0" id="error_email" variant='danger'></Alert>
 				</Form.Group>
 
 				<Form.Group className="mb-3"  controlId="password">
 					<Form.Label>Password</Form.Label>
 					<Form.Control name="password"  value={data.password} type="password" onChange={handleChange} placeholder="Enter Password" />
+					<Alert key='danger' className="d-none pt-0 pb-0" id="error_password" variant='danger'></Alert>
 				</Form.Group>
 
 

@@ -54,7 +54,8 @@ laxios.interceptors.response.use(function (response) {
     window.location=adminlink.auth.login;
     return Promise.reject(error.response);
   } else {
-    return Promise.reject(error);
+    // console.log('aaaaa');
+    return Promise.reject(error.response.data.errors);
   }
   // console.log(error.response.status,'yyyyyyyy');
   // Any status codes that falls outside the range of 2xx cause this function to trigger
