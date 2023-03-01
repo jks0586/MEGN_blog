@@ -52,3 +52,151 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+
+
+#***************************************** letscmsapp *****************************/
+# Xcode
+letsapp/!**/*.xcodeproj
+letsapp/!**/*.pbxproj
+letsapp/!**/*.xcworkspacedata
+letsapp/!**/*.xcsettings
+letsapp/!**/*.xcscheme
+letsapp/*.pbxuser
+letsapp/!default.pbxuser
+letsapp/*.mode1v3
+letsapp/!default.mode1v3
+letsapp/*.mode2v3
+letsapp/!default.mode2v3
+letsapp/*.perspectivev3
+letsapp/!default.perspectivev3
+letsapp/xcuserdata
+letsapp/*.xccheckout
+letsapp/*.moved-aside
+letsapp/DerivedData
+letsapp/*.hmap
+letsapp/*.ipa
+letsapp/*.xcuserstate
+letsapp/project.xcworkspace
+letsapp/**/.xcode.env.local
+
+# Gradle
+letsapp//build/
+letsapp//packages/react-native-gradle-plugin/build/
+letsapp//packages/rn-tester/build
+letsapp//packages/rn-tester/android/app/.cxx/
+letsapp//packages/rn-tester/android/app/build/
+letsapp//packages/rn-tester/android/app/gradle/
+letsapp//packages/rn-tester/android/app/gradlew
+letsapp//packages/rn-tester/android/app/gradlew.bat
+letsapp//ReactAndroid/build/
+letsapp//ReactAndroid/.cxx/
+letsapp//ReactAndroid/gradle/
+letsapp//ReactAndroid/gradlew
+letsapp//ReactAndroid/gradlew.bat
+letsapp//ReactAndroid/external-artifacts/build/
+letsapp//ReactAndroid/external-artifacts/artifacts/
+letsapp//ReactAndroid/hermes-engine/build/
+letsapp//ReactAndroid/hermes-engine/.cxx/
+letsapp//template/android/app/build/
+letsapp//template/android/build/
+letsapp/
+# Buck
+letsapp/.buckd
+letsapp/buck-out
+letsapp//.lsp.buckd
+letsapp//.lsp-buck-out
+letsapp//ReactAndroid/src/main/jni/prebuilt/lib/
+letsapp//ReactAndroid/src/main/gen
+
+# Android Studio
+letsapp/.project
+letsapp/.settings
+letsapp/.classpath
+
+# Watchman
+letsapp/.watchmanconfig
+
+# Android
+letsapp/.idea
+letsapp/.gradle
+letsapp/local.properties
+letsapp/*.iml
+letsapp//android/*
+letsapp/!/android/README.md
+
+# Node
+letsapp/node_modules
+letsapp/*.log
+letsapp/.nvm
+letsapp/package-lock.json
+
+# OS X
+letsapp/.DS_Store
+
+# Test generated files
+letsapp//ReactAndroid/src/androidTest/assets/AndroidTestBundle.js
+letsapp/*.js.meta
+
+letsapp//coverage
+letsapp//third-party
+
+# Test Reports
+letsapp//reports
+
+# Stack Dumps generated when programs crash (Ex. bash.exe.stackdump on Win)
+letsapp/*.stackdump
+
+# Root dir shouldn't have Xcode project
+letsapp//*.xcodeproj
+
+# ReactCommon subdir shouldn't have Xcode project
+letsapp//ReactCommon/**/*.xcodeproj
+
+# Libs that shouldn't have Xcode project
+letsapp//Libraries/FBLazyVector/**/*.xcodeproj
+letsapp//Libraries/RCTRequired/**/*.xcodeproj
+letsapp//React/CoreModules/**/*.xcodeproj
+letsapp//React/FBReactNativeSpec/**/*.xcodeproj
+letsapp//packages/react-native-codegen/**/*.xcodeproj
+
+# Ruby Gems (Bundler)
+letsapp//vendor
+letsapp//template/vendor
+letsapp/.ruby-version
+letsapp//**/.ruby-version
+
+# iOS / CocoaPods
+letsapp//template/ios/build/
+letsapp//template/ios/Pods/
+letsapp//template/ios/Podfile.lock
+letsapp//packages/rn-tester/Gemfile.lock
+
+# Ignore RNTester specific Pods, but keep the __offline_mirrors__ here.
+letsapp//packages/rn-tester/Pods/*
+letsapp/!/packages/rn-tester/Pods/__offline_mirrors_hermes__
+letsapp/!/packages/rn-tester/Pods/__offline_mirrors_jsc__
+
+# @react-native/codegen
+letsapp//React/FBReactNativeSpec/FBReactNativeSpec
+letsapp//packages/react-native-codegen/lib
+letsapp//packages/react-native-codegen/tmp/
+letsapp//ReactCommon/react/renderer/components/rncore/
+letsapp//packages/rn-tester/NativeModuleExample/ScreenshotManagerSpec*
+letsapp//**/RCTThirdPartyFabricComponentsProvider.*
+
+
+# Additional SDKs
+letsapp//sdks/download
+letsapp//sdks/hermes
+letsapp//sdks/hermesc
+
+# Visual studio
+letsapp/.vscode
+letsapp/.vs
+
+# Android memory profiler files
+letsapp/*.hprof
+
+# Temporary files created by Metro to check the health of the file watcher
+letsapp/.metro-health-check*
