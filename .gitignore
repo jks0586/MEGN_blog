@@ -6,9 +6,11 @@
 # Node artifact files
 admin/node_modules/
 api/node_modules/
+front/node_modules/
 graphqlexpress/node_modules/
 letsapp/node_modules/
 letscmsapp/node_modules/
+reactapp/node_modules/
 node_modules/
 dist/
 
@@ -57,146 +59,146 @@ Thumbs.db
 
 #***************************************** letscmsapp *****************************/
 # Xcode
-letsapp/!**/*.xcodeproj
-letsapp/!**/*.pbxproj
-letsapp/!**/*.xcworkspacedata
-letsapp/!**/*.xcsettings
-letsapp/!**/*.xcscheme
-letsapp/*.pbxuser
-letsapp/!default.pbxuser
-letsapp/*.mode1v3
-letsapp/!default.mode1v3
-letsapp/*.mode2v3
-letsapp/!default.mode2v3
-letsapp/*.perspectivev3
-letsapp/!default.perspectivev3
-letsapp/xcuserdata
-letsapp/*.xccheckout
-letsapp/*.moved-aside
-letsapp/DerivedData
-letsapp/*.hmap
-letsapp/*.ipa
-letsapp/*.xcuserstate
-letsapp/project.xcworkspace
-letsapp/**/.xcode.env.local
+!**/*.xcodeproj
+!**/*.pbxproj
+!**/*.xcworkspacedata
+!**/*.xcsettings
+!**/*.xcscheme
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+**/.xcode.env.local
 
 # Gradle
-letsapp//build/
-letsapp//packages/react-native-gradle-plugin/build/
-letsapp//packages/rn-tester/build
-letsapp//packages/rn-tester/android/app/.cxx/
-letsapp//packages/rn-tester/android/app/build/
-letsapp//packages/rn-tester/android/app/gradle/
-letsapp//packages/rn-tester/android/app/gradlew
-letsapp//packages/rn-tester/android/app/gradlew.bat
-letsapp//ReactAndroid/build/
-letsapp//ReactAndroid/.cxx/
-letsapp//ReactAndroid/gradle/
-letsapp//ReactAndroid/gradlew
-letsapp//ReactAndroid/gradlew.bat
-letsapp//ReactAndroid/external-artifacts/build/
-letsapp//ReactAndroid/external-artifacts/artifacts/
-letsapp//ReactAndroid/hermes-engine/build/
-letsapp//ReactAndroid/hermes-engine/.cxx/
-letsapp//template/android/app/build/
-letsapp//template/android/build/
-letsapp/
+/build/
+/packages/react-native-gradle-plugin/build/
+/packages/rn-tester/build
+/packages/rn-tester/android/app/.cxx/
+/packages/rn-tester/android/app/build/
+/packages/rn-tester/android/app/gradle/
+/packages/rn-tester/android/app/gradlew
+/packages/rn-tester/android/app/gradlew.bat
+/ReactAndroid/build/
+/ReactAndroid/.cxx/
+/ReactAndroid/gradle/
+/ReactAndroid/gradlew
+/ReactAndroid/gradlew.bat
+/ReactAndroid/external-artifacts/build/
+/ReactAndroid/external-artifacts/artifacts/
+/ReactAndroid/hermes-engine/build/
+/ReactAndroid/hermes-engine/.cxx/
+/template/android/app/build/
+/template/android/build/
+
 # Buck
-letsapp/.buckd
-letsapp/buck-out
-letsapp//.lsp.buckd
-letsapp//.lsp-buck-out
-letsapp//ReactAndroid/src/main/jni/prebuilt/lib/
-letsapp//ReactAndroid/src/main/gen
+.buckd
+buck-out
+/.lsp.buckd
+/.lsp-buck-out
+/ReactAndroid/src/main/jni/prebuilt/lib/
+/ReactAndroid/src/main/gen
 
 # Android Studio
-letsapp/.project
-letsapp/.settings
-letsapp/.classpath
+.project
+.settings
+.classpath
 
 # Watchman
-letsapp/.watchmanconfig
+.watchmanconfig
 
 # Android
-letsapp/.idea
-letsapp/.gradle
-letsapp/local.properties
-letsapp/*.iml
-letsapp//android/*
-letsapp/!/android/README.md
+.idea
+.gradle
+local.properties
+*.iml
+/android/*
+!/android/README.md
 
 # Node
-letsapp/node_modules
-letsapp/*.log
-letsapp/.nvm
-letsapp/package-lock.json
+node_modules
+*.log
+.nvm
+package-lock.json
 
 # OS X
-letsapp/.DS_Store
+.DS_Store
 
 # Test generated files
-letsapp//ReactAndroid/src/androidTest/assets/AndroidTestBundle.js
-letsapp/*.js.meta
+/ReactAndroid/src/androidTest/assets/AndroidTestBundle.js
+*.js.meta
 
-letsapp//coverage
-letsapp//third-party
+/coverage
+/third-party
 
 # Test Reports
-letsapp//reports
+/reports
 
 # Stack Dumps generated when programs crash (Ex. bash.exe.stackdump on Win)
-letsapp/*.stackdump
+*.stackdump
 
 # Root dir shouldn't have Xcode project
-letsapp//*.xcodeproj
+/*.xcodeproj
 
 # ReactCommon subdir shouldn't have Xcode project
-letsapp//ReactCommon/**/*.xcodeproj
+/ReactCommon/**/*.xcodeproj
 
 # Libs that shouldn't have Xcode project
-letsapp//Libraries/FBLazyVector/**/*.xcodeproj
-letsapp//Libraries/RCTRequired/**/*.xcodeproj
-letsapp//React/CoreModules/**/*.xcodeproj
-letsapp//React/FBReactNativeSpec/**/*.xcodeproj
-letsapp//packages/react-native-codegen/**/*.xcodeproj
+/Libraries/FBLazyVector/**/*.xcodeproj
+/Libraries/RCTRequired/**/*.xcodeproj
+/React/CoreModules/**/*.xcodeproj
+/React/FBReactNativeSpec/**/*.xcodeproj
+/packages/react-native-codegen/**/*.xcodeproj
 
 # Ruby Gems (Bundler)
-letsapp//vendor
-letsapp//template/vendor
-letsapp/.ruby-version
-letsapp//**/.ruby-version
+/vendor
+/template/vendor
+.ruby-version
+/**/.ruby-version
 
 # iOS / CocoaPods
-letsapp//template/ios/build/
-letsapp//template/ios/Pods/
-letsapp//template/ios/Podfile.lock
-letsapp//packages/rn-tester/Gemfile.lock
+/template/ios/build/
+/template/ios/Pods/
+/template/ios/Podfile.lock
+/packages/rn-tester/Gemfile.lock
 
 # Ignore RNTester specific Pods, but keep the __offline_mirrors__ here.
-letsapp//packages/rn-tester/Pods/*
-letsapp/!/packages/rn-tester/Pods/__offline_mirrors_hermes__
-letsapp/!/packages/rn-tester/Pods/__offline_mirrors_jsc__
+/packages/rn-tester/Pods/*
+!/packages/rn-tester/Pods/__offline_mirrors_hermes__
+!/packages/rn-tester/Pods/__offline_mirrors_jsc__
 
 # @react-native/codegen
-letsapp//React/FBReactNativeSpec/FBReactNativeSpec
-letsapp//packages/react-native-codegen/lib
-letsapp//packages/react-native-codegen/tmp/
-letsapp//ReactCommon/react/renderer/components/rncore/
-letsapp//packages/rn-tester/NativeModuleExample/ScreenshotManagerSpec*
-letsapp//**/RCTThirdPartyFabricComponentsProvider.*
+/React/FBReactNativeSpec/FBReactNativeSpec
+/packages/react-native-codegen/lib
+/packages/react-native-codegen/tmp/
+/ReactCommon/react/renderer/components/rncore/
+/packages/rn-tester/NativeModuleExample/ScreenshotManagerSpec*
+/**/RCTThirdPartyFabricComponentsProvider.*
 
 
 # Additional SDKs
-letsapp//sdks/download
-letsapp//sdks/hermes
-letsapp//sdks/hermesc
+/sdks/download
+/sdks/hermes
+/sdks/hermesc
 
 # Visual studio
-letsapp/.vscode
-letsapp/.vs
+.vscode
+.vs
 
 # Android memory profiler files
-letsapp/*.hprof
+*.hprof
 
 # Temporary files created by Metro to check the health of the file watcher
-letsapp/.metro-health-check*
+.metro-health-check*
